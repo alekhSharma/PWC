@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<script src= "https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<link rel="stylesheet" href="./public/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script  type="text/javascript" src="./public/js/country.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#loginbutton").click(function(){
+				var string = $("#loginbutton").text(); 
+				console.log($("#loginbutton").text());	
+			if(string=="Join Us"){
+		        	$('#loginText').text("Already with us?");
+		        	$("#Signup").show();
+		        	$("#Login").hide();
+		        	$('#loginbutton').text("Dive In");
+					$('#ContinueButton').text("Sign Up");
+		    }
+	    	else{
+					$('#loginText').text("Not with us?");
+		        	$("#Signup").hide();
+		        	$("#Login").show();
+		        	$('#loginbutton').text("Join Us");
+					$('#ContinueButton').text("Log In");
+	    	}
+	    });
+	    });
+	</script>
+	
+	<script>
+			var check = function() {
+					//this is to validate password.... 
+					if(document.getElementById('pass2').value!='' && document.getElementById('pass3').value!=''){
+					  if (document.getElementById('pass2').value == document.getElementById('pass3').value) {
+						document.getElementById('message').style.color = 'green';
+						document.getElementById('message').innerHTML = 'Password matched!';		
+					  } else {
+						document.getElementById('message').style.color = 'red';
+						document.getElementById('message').innerHTML = 'Pasword mismatch!';
+					  }
+					}else{
+						document.getElementById('message').innerHTML = '';
+					}
+				}
+		//  To send login and signup request
+				$(document).ready(function(){
+				$("#ContinueButton").click(function(){
+				var string = $("#ContinueButton").text(); 
+				// for signup request
+				if(string == 'Sign Up'){
+				
+				  const username = $("#email").val();
+				  const password = $("#pass2").val();
+				  const firstName=$("#userFirst").val();
+				  const lastName=$("#userLast").val();
+				  const dob=$("#dob").val();
+				  const country=$("#country").val();
+				  const state=$("#state").val();
+				  console.log(country+state);
+				  // check if field are empty or not
+				  if(username!=''&&password!=''&&firstName!=''&&lastName!=''&&dob!='' && country!='-1' && state!=''){
+				  	document.getElementById('message').innerHTML = '';
+				  		$.post("http://localhost:3000/sendsignupreq", { username: username, password: password,firstName: firstName,lastName: lastName,dob: dob,country: country,state: state}, (data, status) => {
+				 			
+								
+				  			// if request is correct
+							if (status === 'success' && data!='' && typeof(data.errmsg)=='undefined' )
+							{
+								window.location.href = "./dashboard";			
+						  	}
+						  	else 
+							{	
+								// if email is already used	
+						  	 	if(status === 'success' && data!='' && typeof(data.errmsg)!='undefined' && data.errmsg.includes('E11000 duplicate key error collection') )
+						  		{	
+						  			document.getElementById('message').style.color = 'red';
+									document.getElementById('message').innerHTML = 'Email Already Used';	
+						  		}
+						  		// any other issues
+								else
+								{	
+									document.getElementById('message').style.color = 'red';
+									document.getElementById('message').innerHTML = ' up Failure';		
+								}	
+							}
+						});
+					}
+				  else{
+				  	// field are not proper filled
+				  	document.getElementById('message').style.colSignor = 'red';
+					document.getElementById('message').innerHTML = 'x fill form completely';	
+				  }
+				}
+			
+				// for login request
+				if(string == 'Log In'){
+				  
+				  const username = $("#user").val();
+				  const password = $("#pass1").val();
+				  // to check if field are filled or not 
+				  if(username!=''&&password!=''){
+				  		console.log(username);
+				  		console.log(password);
+				  		$.post("http://localhost:3000/sendloginreq", { username: username, password: password }, (data, status) => {  
+						if (status === 'success' && data!='' )
+							{
+								// if request is correct
+								console.log('dashboard called');
+								window.location.href = "./dashboard"; 
+							}	  
+						else
+							{
+							// if request is not correct
+							document.getElementById('message').style.color = 'red';
+							document.getElementById('message').innerHTML = 'Either Password or Username is incorrect';
+							}
+						});
+					}
+					else{
+						// if not filled properly
+						document.getElementById('message').style.color = 'red';
+						document.getElementById('message').innerHTML = 'Please fill form completely';
+					}
+				}
+			})
+		  });
+				
+</script>
+  
+</head>
+
+<body class="w3-Nunito" >
+	
+	<div style="width:100%;height:100vh;background-color: #141619;">
+		<div class="w3-half">
+			<img src="./public/img/have-fun-with-code_.gif" height="100%" width="100%" style="margin-top:10%;"/>
+		</div>
+		<div class="w3-half container_body" style="background-color: #f4f5f6;  height:100vh;">		
+			<div class="w3-container"  style="width:65%;height:100vh;bottom:0px;margin-left:auto;margin-right:auto;margin-top:2%;margin-bottom:2%;	">
+				<div class="w3-card-0 w3-round-large w3-white w3-border w3-margin-top w3-margin-bottom">
+					<form>
+						<div class="w3-row-padding w3-center">
+							<div class="">
+									<p class="w3-xlarge" style="padding:15px;margin:0px;">Play with SFDC</p>
+					  		</div>
+					  	</div>	
+						
+						<hr/>
+
+						<div id="Signup" class="" style="display: none;">
+						 	<div class=" w3-row-padding  w3-padding" >
+						  		<div class="w3-half">
+										<input class="w3-input w3-border w3-round w3-small" type="text" id="userFirst" placeholder="First name">
+						  		</div>
+						  		<div class="w3-half">
+									<input class="w3-input w3-border w3-round w3-small" type="text" id="userLast" placeholder="Last name">
+						  		</div>
+							</div>	
+						
+							<div class="w3-row-padding w3-padding">
+								<div class="w3-row-padding">
+									<input class="w3-input w3-border w3-round w3-small" type="text" id="email" placeholder="Email">
+						  		</div>
+							</div>	
+						
+							<div class="w3-row-padding  w3-padding">
+								<div class="w3-row-padding">
+									<input class="w3-input w3-border w3-round w3-small" type="date" id="dob" placeholder="date of birth">
+								</div>
+							</div>		
+						
+							<div class="w3-row-padding  w3-padding">
+								<div class="w3-half" style="overflow:hidden">
+	<select id="country" class="w3-select w3-border w3-round w3-small" name="option" placeholder="Country"><option value="" disabled selected>country</option></select>
+						  		</div>
+						  		<div class="w3-half" style="max-width:200px">
+									<script type="text/javascript" language="JavaScript">
+        document.write('<select  class="w3-select w3-border w3-round w3-small" name="state" id="state"><option value="">Select state</option></select>')
+        </script>
+								</div>
+							</div>	
+						
+							<div class="w3-row-padding  w3-padding">
+						  		<div class="w3-row-padding">
+									<input class="w3-input w3-border w3-round w3-small" type="password" id="pass2" onkeyup="check()" placeholder="Password">
+						  		</div>
+							</div>
+						
+							<div class="w3-row-padding  w3-padding">
+								<div class="w3-row-padding">
+									<input class="w3-input w3-border w3-round w3-small" type="password" id="pass3" onkeyup="check()" placeholder="Confirm password">
+									
+								</div>
+							</div>
+
+						
+						</div>					
+					</form>
+					
+						<div id="Login" class="" >
+							<div class="w3-row-padding w3-padding">
+								<div class="w3-row-padding">
+									<input class="w3-input w3-border w3-round w3-small" type="text" id="user" placeholder="Email">
+						  		</div>
+							</div>	
+							<div class="w3-row-padding  w3-padding">
+						  		<div class="w3-row-padding">
+									<input class="w3-input w3-border w3-round w3-small" type="password" id="pass1" placeholder="Password">
+						  		</div>
+							</div>
+						</div>
+							<div id="message" class="w3-padding w3-center"></div>
+							<div class="w3-row-padding">
+			            		<div class="w3-row-padding w3-center">
+									<button class="button button1 w3-small" id="ContinueButton">Log In</button>
+					  			</div>
+							</div>
+							<hr/>
+							<div class="">
+					  			<div class="w3-center w3-text-grey" style="color: gray;">
+					  				<div>
+					  					<div class="w3-half w3-right-align">
+										<b>	<p id="loginText">Not with us?</p> </b>
+										</div>
+										<div class="w3-half w3-left-align">	
+											<b><button id="loginbutton" class="button2 " style="padding:15px;">Join Us</button> </b>
+										</div>
+									</div>
+					  			</div>
+							</div>
+							<div class="">
+					  			<div class="w3-center" style="color: gray;">
+					  				<div>
+										<div class="w3-margin">	
+										<b>	<button id="loginbutton" class="button2 w3-text-blue w3-small">Forget Password</button> </b>
+										</div>
+									</div>
+					  			</div>
+							</div>
+				</div>		
+			</div>
+		</div>
+
+ <script language="javascript">
+            populateCountries("country", "state");
+           
+        </script>
+	
+  
+	</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+
+	function onloading(){
+		document.getElementById('tagOne').innerHTML = '&lt;';
+		document.getElementById('tagTwo').innerHTML = 'Code';
+		document.getElementById('tagThree').innerHTML = ':';
+		document.getElementById('tagFour').innerHTML = '<i class="fa fa-code-fork"></i> PlaY';
+		document.getElementById('tagFive').innerHTML = '/&gt;';
+	}	
+	
+</script>
+
+<body onload="onloading()">
+
+<div class="w3-container">
+  <h2>W3.CSS Modal</h2>
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-round">
+      <div class="" style="padding:0px; margin:0px;">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+			<div class="w3-cell w3-display-container">
+				<img src="D:/competitor/version 13.0/Pws-master/public/img/Picture1.png" height="40%" class="w3-round"/>
+				 <div class="w3-display-left w3-xlarge w3-margin-left">
+						<p class="w3-large"  style="font-size: 24px;padding-left:10px;">
+						<h2 class="w3-text-white w3-xxlarge" style="color:#0bff01">WELCOME TO</h2> 
+						<spam style="color: #C9C9C9; font-size: 20px;margin:0px;padding:0px;" id="tagOne"></spam>
+						<spam style="color: #4a90e2; font-size: 20px;margin:0px;padding:0px;" id="tagTwo"></spam>
+						<spam style="color: #C9C9C9; font-size: 20px;margin:0px;padding:0px;" id="tagThree"></spam>
+						<spam style="color: #0bff01; font-size: 20px;margin:0px;padding:0px;" id="tagFour"></spam>
+						<spam style="color: #C9C9C9; font-size: 20px;margin:0px;padding:0px;" id="tagFive"></spam>
+						</p>
+				 </div>
+			</div>
+
+			<div class="w3-cell w3-margin w3-padding">
+			  <p>Hello W3.CSS Layout.</p>
+			
+			</div>
+      </div>
+    </div>
+  </div>
+</div>
+            
+</body>
+</html>

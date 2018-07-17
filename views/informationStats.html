@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<script src= "https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script>
+		$(document).ready(function(){
+			$("#ContinueToStepTwo").click(function(){
+						$("#getPicture").hide(200);
+						$("#getStat").show(200);	
+						console.log('inside step one');
+			});
+			$("#ContinueToStepOne").click(function(){
+						$("#getPicture").show(200);
+						$("#getStat").hide(200);	
+						console.log('inside step two');
+			});
+			$("#ContinueToStepFinal").click(function(){
+						$("#id01").hide();
+						console.log('on main page');
+			});
+		});
+
+		 $(document).ready(function () {
+            var options = {
+                beforeSubmit: showRequest,  // pre-submit callback
+                success: showResponse  // post-submit callback
+            };
+
+            // bind to the form's submit event
+            $('#frmUploader').submit(function () {
+                $(this).ajaxSubmit(options);
+                // always return false to prevent standard browser submit and page navigation
+                return false;
+            });
+        });
+
+        // pre-submit callback
+        function showRequest(formData, jqForm, options) {
+            alert('Uploading is starting.');
+            return true;
+        }
+
+        // post-submit callback
+        function showResponse(responseText, statusText, xhr, $form) {
+            alert('status: ' + statusText + '\n\nresponseText: \n' + responseText );
+        }
+		
+	</script>
+</head>
+
+<body class="w3-Nunito">
+	
+	
+	<!-- hover Modal -->
+	
+    <div id="id01" class="w3-modal" style="display:block;">
+    <div class="w3-modal-content w3-round" style="width:50%; background-color: white;">
+      <div class="w3-container w3-center w3-padding-16">
+		
+			<!--<div class="w3-container">
+				<p>
+					<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+				</p>
+			</div> -->
+		
+			<div class="w3-round" id="getPicture">
+				<div class="w3-container w3-center">
+					<p class="w3-xlarge" style="color:#20bf6b;font-weight:100;">Please</p>
+				</div>
+				<div class="w3-container w3-center">
+					<img class="w3-circle"	src="./public/img/user_logo.png" style=" box-shadow: 1px 1px 1px 1px lightgray;" width="20%"/>
+				</div>
+				<div class="w3-container">
+				  <p>
+				  <form id="frmUploader" enctype="multipart/form-data" action="api/Upload/" method="post">
+					<input type="file" name="imgUploader" multiple />
+					<input type="submit" name="submit" id="btnSubmit" value="Upload" />
+				</form>
+				<!--	<form action="">
+					  <input type="file" name="pic" accept="image/*">
+					  <input type="submit" class="">
+					</form>  -->
+				  </p>
+				</div>
+				<div class="w3-container">
+				<div>
+					<div class="w3-right-align w3-padding">
+						<button class="button button_active" id="ContinueToStepTwo">Continue &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+					</div>
+				</div>			
+			</div>
+			</div> 
+			<div class=" w3-round" id="getStat" style="display:none;background-color:white;">
+				<div class="w3-container" style="">
+					<p class="w3-xlarge" style="color:#20bf6b;font-weight:100;">Please</p>
+				</div>
+				<div class="w3-container" >
+					<div class="w3-half w3-padding w3-left-align">
+						<p class="w3-large" style="color:gray"> to L</p>
+						<label class="container_checkbox">One
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+					
+						<label class="container_checkbox">One
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="w3-half w3-padding w3-left-align">
+						<p class="w3-large" style="color:gray"> to C</p>
+						<label class="container_checkbox">One
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+					
+						<label class="container_checkbox">One
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+					</div>
+				</div>
+				<div>
+					<div class="w3-half w3-left-align w3-padding">
+						<button class="button button_active" id="ContinueToStepOne">Back &nbsp;&nbsp;<i class="fa fa-arrow-left"></i></button>
+					</div>
+					<div class="w3-half w3-right-align w3-padding">
+						<button class="button button_active" id="ContinueToStepFinal">Submit &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+					</div>
+				</div>	
+			</div>
+		</div>	  
+		</div>
+	  </div>
+	
+	
+	<!-- Main Page -->
+	
+	<div class="w3-container w3-text-white" style="background: linear-gradient(90deg, #2c52ab , #2c52ab );">		
+		<div class="w3-row">
+			<div class="w3-col" style="width:150px"><p>Header</p></div>
+			<div class="w3-rest " style="margin-left:45%;">
+				<p>
+					 <input type="text" class="w3-text-white w3-round" name="search" placeholder="Search...">
+				</p>
+			</div>
+		</div>
+		</div>
+	<div class="w3-container w3-text-white w3-center" style="background: linear-gradient(90deg, #4b7bec,#2c52ab );">
+		
+		<div class="w3-row">
+		  <div class="w3-container w3-half w3-padding ">
+				<div class="w3-card w3-center w3-white w3-round" style="width:30%;margin-left:70%;">
+					<div class="w3-padding">
+						<div class="">a</div>
+					</div>
+				</div> 
+		  </div>
+		  <div class="w3-container w3-half w3-padding ">
+				<div class="w3-card w3-center w3-white w3-round" style="width:30%;margin-right:70%;">
+					<div class="w3-padding">
+						<div class="">b</div>
+					</div>
+				</div> 
+		  </div>
+		</div>
+	</div>
+	
+	<div class="w3-container" style="background-color:#f4f5f6">
+		<div class="w3-row">
+			<div class="w3-col w3-cell w3-container w3-margin" style="width:20%;background-color:white;">
+				<p>Ns</p>
+			</div>
+			<div class="w3-col w3-cell w3-container w3-margin" style="width:50%;">
+				<div class="w3-row">
+				  <div class="w3-third w3-container">
+					<div class="w3-white w3-round  w3-padding w3-center" >
+						<p>Hover over me to display me as a card!</p>
+					  </div>
+				  </div>
+				  <div class="w3-third w3-container">
+					<div class="w3-white w3-round  w3-padding  w3-center" >
+						<p>Hover over me to display me as a card!</p>
+					  </div>
+				  </div>
+				  <div class="w3-third w3-container">
+					<div class="w3-white w3-round w3-padding  w3-center" >
+						<p>Hover over me to display me as a card!</p>
+					  </div>
+				  </div>
+				</div>
+				<hr/>
+			</div>
+			<div class="w3-col w3-cell w3-container w3-margin" style="width:20%;background-color:white;">
+				<p>10 </p>
+			</div>
+		</div>
+	</div>
+</body>

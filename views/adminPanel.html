@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<title>W3.CSS</title>
+	
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+
+		<script>
+		$(document).ready(function(){
+			document.getElementById('user').style.backgroundColor= "#4c924c"; 
+			$("#user").click(function(){
+				$("#userPage").show();
+				$("#blogPage").hide();
+				$("#modulePage").hide();
+				document.getElementById('user').style.backgroundColor= "#4c924c";
+                document.getElementById('blog').style.backgroundColor= "";
+                document.getElementById('module').style.backgroundColor= ""; 
+			});
+			$("#blog").click(function(){
+				$("#userPage").hide();
+				$("#blogPage").show();
+				$("#modulePage").hide();
+				document.getElementById('user').style.backgroundColor= "";
+				document.getElementById('blog').style.backgroundColor= "#4c924c";
+				document.getElementById('module').style.backgroundColor= "";
+			});
+			$("#module").click(function(){
+				$("#userPage").hide();
+				$("#blogPage").hide();
+				$("#modulePage").show();
+				document.getElementById('module').style.backgroundColor= "#4c924c";
+				document.getElementById('user').style.backgroundColor= "";
+				document.getElementById('blog').style.backgroundColor= ""; 
+			});
+			
+		});
+		function editModal(input){
+		
+				console.log(input.parentNode.parentNode.cells[2].innerHTML);
+				$.post("http://localhost:3000/adminPanel/id",{id : input.parentNode.parentNode.cells[2].innerHTML, mode : 'deleteConform'}, (data, status) => { 
+				console.log(status); 
+					if(status === 'success' )
+		                  {  
+		                 document.getElementById('id01').style.display='block';
+		                 document.getElementById('modalUserName').innerHTML = (data.result.FirstName);
+		                  document.getElementById('modalUserID').innerHTML = (data.result._id);
+		                   document.getElementById('modalUserFirst').innerHTML = (data.result.FirstName);
+		                    document.getElementById('modalUserLast').innerHTML = (data.result.LastName);
+		                     document.getElementById('modalUserEmail').innerHTML = (data.result.Email);
+		                  }
+				});
+
+		}
+
+		function editMethod(input){
+			console.log(input.parentNode.parentNode.cells[2].innerHTML);
+				$.post("http://localhost:3000/adminPanel/id",{id : input.parentNode.parentNode.cells[2].innerHTML, mode : 'edit'}, (data, status) => {  
+					console.log(status);
+					if(status === 'success' )
+		                  {  
+		                    window.location.href = '/adminPanel';
+		                  }
+				});
+		}
+
+		function DeleteMethod(){
+			console.log(document.getElementById('modalUserID').innerHTML);
+				var userid =   document.getElementById('modalUserID').innerHTML;
+				$.post("http://localhost:3000/adminPanel/id",{id : userid, mode : 'delete'}, (data, status) => { 
+				console.log(status); 
+					if(status === 'success' )
+		                  {  
+		                    window.location.href = '/adminPanel';
+		                  }
+				});
+		}
+		</script> 
+		<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		.w3-Nunito {
+			font-family: "Nunito", sans;
+		}
+		</style>
+	</head>
+	<body class="w3-Nunito" >
+
+		<!-- Sidebar -->
+		<div class="w3-sidebar  w3-light-green w3-bar-block" style="width:10%">
+		  <h3 class="w3-bar-item w3-dark-grey">PWS</h3>
+		  <a id="user" class="w3-bar-item w3-button"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp; Users</a>
+		  <a id="blog" class="w3-bar-item w3-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp; Blogs</a>
+		  <a id="module" class="w3-bar-item w3-button"><i class="fa fa-window-maximize" aria-hidden="true"></i> &nbsp; Modules</a>
+		</div>
+
+		<!-- Page Content -->
+		<div style="margin-left:10%">
+
+
+			<div id="userPage" class="w3-container" style="display:show;">
+				<div class=" w3-bar w3-row">
+						
+						<div class="w3-col w3-container" style="width:400px;">
+							<p class="w3-xlarge" style="padding:0px;margin:10px;">User Admin Panel</p>
+						</div>
+						<div class="w3-container w3-padding w3-rest w3-right-align w3-border">
+							
+						</div>
+				</div>
+				
+				<div class="w3-row w3-border-top">
+				  <div class="w3-threequarter w3-cell w3-margin-top">
+					
+						<table>
+						  <tr>
+							<th></th>
+							<th></th>
+							<th>User ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
+							<th>Coins</th>
+							<th>Active</th>
+						  </tr>
+						  	
+						   <% for(var i=0; i < data.length; i++) { %>
+						   		<tr>
+						   			<td><input type="checkbox"></input></td>
+						   			<td>
+						   				<span value="<%= data[i]._id %>" 
+						   					id="userIdFromTable" onclick="editMethod(this)" class="w3-border-bottom">
+						   				Edit 
+						   				</span> 
+				
+						   				<span value="<%= data[i]._id %>" 
+						   					id="userIdFromTable" onclick="editModal(this)" class="w3-border-bottom">
+						   				| Del
+						   				</span>
+						   			</td>
+						   			<td><%= data[i]._id %></td>
+						     		<td><%= data[i].FirstName %></td>
+						     		<td><%= data[i].LastName %></td>
+						     		<td><%= data[i].Email %></td>
+						     		<td></td>
+						     		<td></td>
+						   		</tr>
+							<% } %>
+						  
+						</table>
+						<div class="w3-container w3-center">
+							  <div id="id01" class="w3-modal">
+							    <div class="w3-modal-content"  style="width:50%;">
+							      <div class="w3-container">
+							        <span  class="w3-button w3-display-topright">&times;</span>
+							        <h3>Do you want to delete <span id="modalUserName"></span> ? </h3>
+							        <table style="width:50%;margin-left:auto;margin-right: auto; border:0px;">
+							        	<tr>
+							        		<td><p> User ID </p></td>
+							        		<td><span id="modalUserID"></span></td>
+							        	</tr>
+							        	<tr>
+							        		<td><p> First Name : </p></td>
+							        		<td><span id="modalUserFirst"></span></td>
+							        	</tr>
+							        	<tr>
+							        		<td><p> Last Name : </p></td>
+							        		<td><span id="modalUserLast"></span></td>
+							        	</tr>
+							        	<tr>
+							        		<td><p> Email : </p></td>
+							        		<td><span id="modalUserEmail"></span></td>
+							        	</tr>
+							    	</table>
+							    	<button class="w3-button w3-margin w3-white w3-border w3-border-blue"
+							    	onclick="document.getElementById('id01').style.display='none'">
+							    		Cancel</button>
+							    	<button class="w3-button w3-margin w3-border w3-blue" 
+							    		onclick="DeleteMethod()">
+							    		Confirm</button>
+							      </div>
+							    </div>
+							  </div>
+						</div>
+				  </div>
+				  <div class="w3-quarter w3-cell w3-center w3-border-left" style="padding-top:0px;margin:0px;">
+					  <p>Dashboard &nbsp; <i class="fa fa-area-chart" aria-hidden="true"></i></p>
+					  	<p class="w3-xxxlarge w3-text-green" style="padding:1px;margin:0px;"> <%= data.length %></p> 
+						<canvas id="myChart" height="220px"></canvas>
+						<canvas id="myChart2" height="220px"></canvas>
+				  </div>
+				</div>
+
+			</div>
+			
+			<div id="blogPage" class="w3-container" style="display:none;">
+				<h2>b Navigation </h2>
+
+			</div>
+			
+			<div id="modulePage" class="w3-container" style="display:none;">
+				<h2>m Navigation </h2>
+		
+			</div>
+
+		</div>
+		  
+	</body>
+			<script>
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var chart = new Chart(ctx, {
+			    // The type of chart we want to create
+			    type: 'line',
+
+			    // The data for our dataset
+			    data: {
+			        labels: ["January", "February", "March", "April", "May", "June", "July"],
+			        datasets: [{
+			            label: "# of Users",
+			            backgroundColor: '#e74c3c',
+			            borderColor: '#c0392b',
+			            data: [0, 10, 5, 2, 20, 30, 45],
+			        }]
+			    }
+			});
+			</script>
+			<script>
+			var ctx = document.getElementById('myChart2').getContext('2d');
+			var chart = new Chart(ctx, {
+			    // The type of chart we want to create
+			    type: 'line',
+
+			    // The data for our dataset
+			    data: {
+			        labels: ["January", "February", "March", "April", "May", "June", "July"],
+			        datasets: [{
+			            label: "# of Active Users",
+			            backgroundColor: '#3498db',
+			            borderColor: '#2980b9',
+			            data: [0, 10, 5, 2, 20, 30, 45],
+			    
+			        }]
+			    }
+			});
+			</script>
+</html>

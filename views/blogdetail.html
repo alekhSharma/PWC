@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<script src="/public/js/ejs.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src= "https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="http://malsup.github.com/jquery.form.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<link rel="stylesheet" href="/public/css/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script>
+		
+		$(document).ready(function(){
+	
+		});
+
+	</script>
+	<style>
+			ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			}
+
+			li {
+				float: left;
+			}
+
+			li a {
+				display: block;
+				color: white;
+				text-align: center;
+				padding: 10px 15px;
+				text-decoration: none;
+				   
+			}
+
+			li a:hover {
+				background-color: #2c52ab 	;
+			}
+			
+	</style>
+</head>
+
+<body class="w3-Nunito w3-small">
+	<div class="w3-container" style="background-color:white;">		
+		<div class="w3-row">
+			
+		      <div class="w3-col" style="width:300px;">
+		        <p class="w3-text-black w3-large"  style="font-size: 20px;">
+		          <spam style="color:green; font-size: 24px;">Play </spam> with <spam style="color: #009edb; font-size: 24px;">Code</spam>
+		        </p>
+		      </div>
+		      <div class="w3-rest w3-right-align">
+		          <p class="w3-text-black w3-padding" style="font-size: 14px;"> 
+
+		             <span > 
+		                 <i  id="signoutrequest" class="fa fa-sign-out" style="font-size: 18px;"></i> Log out
+		            </span>
+
+		          </p>
+		      </div>
+    
+		</div>
+	</div>
+	<div class="w3-container w3-text-white w3-center" style="background: linear-gradient(90deg, #4b7bec,#2c52ab );">
+		
+		<div class="w3-row" style="margin-left:35%;font-size: 16px;padding:10px;">
+			<ul>
+			  <li><a class="active" href="#home">Learn</a></li>
+			  <li><a href="#news">Practise</a></li>
+			  <li><a href="#contact">Implement</a></li>
+			  <li><a href="#about">Contribute</a></li>
+			  <li><a href="#about">Fun</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="w3-container" style="background-color:white;height: 100vh;">
+		<div class="w3-row">
+			<div class="w3-col w3-margin " style="width:70%;background-color: white;">
+				<div class="w3-container w3-xxlarge" > <b><%= blog[0].Heading %> </b></div><br/>
+				<div class="w3-container w3-xlarge" > <%= blog[0].Intro %> </div><br/>
+				<div class="w3-container w3-large" ><%= blog[0].blog %></div>
+				<hr/>
+				<div class=" w3-margin-top w3-container w3-normal">Written by - <%= blog[0].CreatedBy %></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

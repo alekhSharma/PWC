@@ -32,6 +32,7 @@
 
 		// Get the size of an object
 		var size = Object.size(rows);
+		console.log(size);
 
 		function onloading(){
 			document.getElementById('tagOne').innerHTML = '&lt;';
@@ -149,8 +150,8 @@
 		</style>
 </head>
 
-<body class="w3-Nunito w3-small" onload="onloading()" style="background-color: #f5f5f5">
-<div class="w3-container w3-top w3-mobile" style="background-color:#24292e;">		
+<body class="w3-Nunito w3-small" onload="onloading()" style="background-color: #f9f9f9">
+<div class="w3-container w3-top " style="background-color:#24292e;">		
 	<div class="w3-row ">
 		
 	      <div class="w3-col" style="width:300px;">
@@ -180,113 +181,118 @@
 	      </div>
 	</div>
 </div>
-<div class="w3-panel  w3-round-large" style="margin-top:5%;padding:0px;width:100%;position: relative;border-bottom:2px solid lightgrey;">
-		<div class="w3-container w3-white">
-			<div class="w3-row w3-">
-				<div class="w3-col w3-quarter w3-margin-top">
+<div class="w3-container" style="margin-top: 55px;height: 100%;">
+	<div class="w3-row">
+		<div class="w3-col w3-cell w3-round-large w3-margin" style="border: 1px solid #e0e0e0; width:15%;background-color:white;position:fixed;top:80px;left:20px;border:2px solid #fff;">
+			<div class="w3-col" style="border-bottom: 1px solid lightgrey;padding-bottom: 20px;">
+			<div class="w3-container" style="border-radius: 5px 5px 0px 0px ; background-size: 100% 100%;background-image:url('https://img00.deviantart.net/418a/i/2012/218/2/6/color_blend_by_varunmashru_by_varunmashru-d5a3s6m.png');height: 95px;">
+			</div>
+			<div class="w3-center" style="margin:-95px auto 20px 0px;">
+		
+				<img class="w3-circle w3-margin-top " src='<%= userdetail.profileImage %>' id="homepic" width="75%" style="border:2px solid #fff;box-shadow: inset 0 1.5px 3px 0 rgba(0,0,0,.15),0 1.5px 3px 0 rgba(0,0,0,.15);"/></div>
+			 	<div class=" w3-center"> 
+		          <p class="w3-large" style="padding-bottom:0px;margin-bottom:0px; color:black">
+		                <b><%= userdetail.FirstName %> <%= userdetail.LastName%></b> 
+		          </p>
+		          		Code enthusiast
+				  <hr/>
+		           		24 contributions
+		          <br/> 
+		           		2 blogs
+		           		
+		      	</div>
+			 		
+			</div>
 
-						<div class="w3-row">
-					
-							<div class="w3-col w3-half">
-								<img class="w3-circle" src='<%= userdetail.profileImage %>' id="homepic" width="90%" style="border:2px solid #fff;box-shadow: inset 0 1.5px 3px 0 rgba(0,0,0,.15),0 1.5px 3px 0 rgba(0,0,0,.15);"/>
-						 	 </div>
-						 	<div class="w3-col w3-half">
-						 		<p class="w3-large" style="padding-bottom:0px;margin-bottom:0px; color:black">
-		                		<b><%= userdetail.FirstName %> <%= userdetail.LastName%></b> 
-		          				</p>
-		          				<br/>
-		          				Code Lover
-						 	</div>
-						</div>
-					           		
-				</div>
-	
+			<div class="w3-col w3-container w3-padding w3-center-align" id="blogsetup" style="margin-top: 2px;background-color:#fafafa;margin-bottom: 2px;border:1px solid #d1d1d1">
 				
-				<div class="w3-col w3-half w3-round-large w3-margin-top w3-margin-bottom" >
-					
-						<div class="w3-col w3-cell w3-container w3-margin-top" style="margin-left: 10%;width: 80%;">
-							<div class="w3-col	w3-round" style="background-color:white;height: 16vh;">
-								  <div class="w3-margin">
-									<div class="w3-row">
-									  	<div class="w3-col w3-quarter ">
-											<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;font-weight: 600;" id="blogSize"> 
-												
-											</p>
-											<p style="color:grey;margin:0px;" class="w3-large">blogs </p>
-									  	</div>
-									  	<div class="w3-col w3-quarter">
-											<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;"> <b>101 </b> </p>
-											<p style="color:grey;margin:0px;" class="w3-large">likes </p>
-									  	</div>
-									
-										<div class="w3-col w3-quarter">
-											<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;"> <b>192 </b> </p>
-											<p style="color:grey;margin:0px;" class="w3-large">views </p>
-									  	</div>
-								  
-									  	<div class="w3-col w3-quarter">
-											<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;"> <b>92 </b> </p>
-											<p style="color:grey;margin:0px;" class="w3-large">views / week </p>
-									  	</div>
-								  	</div>						
-								  </div>
+				 <div class="w3-row">
+					  <div class="w3-col"  style="width:40px">
+					   <i class="material-icons"> settings_ethernet </i>
+					  </div>
+					  <div class="w3-rest">
+					    <div style="color:#2c2e43;font-size: 16px;">  Blog Setup</div>
+					  </div>
+					</div>
+			</div>
+			
+			<div class="w3-col w3-container w3-padding w3-center-align" id="modulesetup" style="background-color:#fafafa;border:1px solid #d1d1d1">
 
-								<!--<div class="w3-half w3-padding" >
-									<canvas id="myChart" height="110px"></canvas>
-								</div>  -->
-		 					</div>
-						</div>
-				</div>
-				<div class="w3-col w3-quarter">
-					&nbsp;
-				</div>
-				<div class="w3-col w3-quarter">
-					
-						<div class="w3-center w3-margin-top w3-margin-bottom w3-round-large" style="border: 1px solid lightgrey; background-color: white;">
-						<div class=" w3-left-align w3-text-grey w3-margin">	
-							Your Favorite Tags:		
-								<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>	
-								<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">SFDC</span>
-								<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Heroku</span>
-						</div>	
-						<div class="w3-large"> Pen Down your thoughts !!</div>						
-						<button class="button" id="blogcreate">Write new blog</button>
-						</div>
-					
-				</div>
+				 <div class="w3-row">
+					  <div class="w3-col"  style="width:40px">
+					  <i class="material-icons"> view_module </i>
+					  </div>
+					  <div class="w3-rest">
+					    <div style="color:#2c2e43;font-size: 16px;">  Module Setup</div>
+					  </div>
+					</div>
+				
 			</div>
 		</div>
-</div>
-<div class="w3-container" >
-		
-		<div class="w3-col w3-panel" style="width:75%;padding: 0px">
-			<% for (var key in blogdetail) { %>	
-						<div class="w3-third w3-margin-left  w3-margin-bottom"  style="width:31%;">	
-							<div class="w3-normal w3-white" style="height: 180px;overflow: hidden;border: 1px solid #e0e0e0; box-shadow: 0 1.5px 3px 0 rgba(0,0,0,.15);border-radius: 4px 4px 0px 0px;" >
+	</div>
+	<div class="w3-col w3-cell w3-container w3-margin" style="top:25px; width:55%;position:relative;left:18%;">
+				<div class="w3-col w3-border w3-round" style="background-color:white;height: 16vh;">
+					<div class="w3-row">
+					  <div class="w3-threequarter">
+						<div class="w3-row w3-padding">
+						  <div class="w3-quarter">
+							<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;" id="blogSize"> <b>
+					
+							</b> </p>
+							<p style="color:grey;margin:0px;"> blogs </p>
+						  </div>
+						  <div class="w3-quarter">
+							<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;"> <b> 192 </b> </p>
+							<p style="color:grey;margin:0px;"> views </p>
+						  </div>
+						  <div class="w3-quarter">
+							<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;"> <b> 101 </b> </p>
+							<p style="color:grey;margin:0px;"> likes </p>
+						  </div>
+						  <div class="w3-quarter">
+							<p class="w3-xxlarge" style="color:#4b7bec;margin:0px;"> <b> 92 </b> </p>
+							<p style="color:grey;margin:0px;"> views this week </p>
+						  </div>
+						</div>
+												
+					  </div>
+					 <div class="w3-quarter w3-padding">
+						<canvas id="myChart" height="220px"></canvas>
+					  </div>
+					</div>
 
+		 		</div>
+				<div>
+						<% for (var key in blogdetail) { %>	
+						<div class="w3-half "  style="width:47%;margin:10px;">	
+							<div class="w3-normal w3-white" style="height: 130px;overflow: hidden;border: 0px solid #e0e0e0; box-shadow: 0 1.5px 3px 0 rgba(0,0,0,.15);" >
 								<div class="blogs w3-white w3-large w3-padding w3-text-black" id="<%= blogdetail[key].id %>">
 						    		<%= blogdetail[key].BlogHead %>
-						    		
+						    		<hr style="margin:0px;"/>
 								</div>
-								<div class="w3-container w3-row w3-normal w3-white w3-padding w3-center">
 
-									<div class="w3-col w3-left-align w3-text-grey">
-
-										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
-									
-										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
-
-										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
-
-									</div>					
-								</div>
 								<div class="blogs w3-white w3-padding w3-center" id="<%= blogdetail[key].id %>">
-									<hr style="margin:0px"/>
 						    		<%= blogdetail[key].BlogBody %>
 								</div>
 							</div>	
+							<div class="w3-container w3-row w3-normal w3-white w3-padding w3-center" style="border: 0px solid #e0e0e0; box-shadow: 0 1.5px 3px 0 rgba(0,0,0,.15);">
+
+								<div class="w3-col w3-left-align w3-text-grey">
+									
+									<div class="">
+
 								
-							<div class="w3-container w3-row w3-normal w3-white w3-padding w3-center" style="border-radius: 0px 0px 4px 4px; border: 1px solid #e0e0e0; box-shadow: 0 1.5px 3px 0 rgba(0,0,0,.15);">
+									
+										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
+									
+										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
+
+										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
+									</div>
+
+								</div>					
+							</div>	
+							<div class="w3-container w3-row w3-normal w3-white w3-padding w3-center" style="border: 0px solid #e0e0e0; box-shadow: 0 1.5px 3px 0 rgba(0,0,0,.15);">
 
 								<div class="w3-col w3-third w3-text-grey">
 									8 June
@@ -305,10 +311,20 @@
 							</div>	
 						</div>
 						<% } %>
-		</div>
-		<div class="w3-col w3-margin" style="width:22%;">
-			
-			<div class="w3-row w3-margin-bottom w3-padding w3-round-large" style="border: 1px solid #e0e0e0; background-color: white;">
+				</div>
+	</div>
+	<div class="w3-col w3-cell w3-container w3-margin" style="width:24%; position: fixed;top :80px;right:20px;">
+			<div class="w3-center w3-margin-bottom" style="border: 1px solid #e0e0e0; background-color: white;">
+						<div class=" w3-left-align w3-text-grey w3-margin">	
+							Your Favorite Tags:		
+								<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>	
+								<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">SFDC</span>
+								<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Heroku</span>
+						</div>	
+						<div class="w3-large"> Pen Down your thoughts !!</div>						
+						<button class="button" id="blogcreate">Write new blog</button>
+			</div>
+			<div class="w3-row w3-margin-bottom w3-padding" style="border: 1px solid #e0e0e0; background-color: white;">
 				<div>
 					<div class="w3-col"  style="width:80%;">
 					   	<p style="font-size:15px;color:#3cb371;color:DodgerBlue;margin:5px;"><b>Your Top blogs</b></p>
@@ -347,7 +363,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="w3-row w3-margin-bottom w3-padding w3-round-large" style="border: 1px solid #e0e0e0; background-color: white;">
+			<div class="w3-row w3-margin-bottom w3-padding" style="border: 1px solid #e0e0e0; background-color: white;">
 				<div>
 					<div class="w3-col"  style="width:80%">
 					   	<p style="font-size:15px;color:#3cb371;color:DodgerBlue;margin:5px;"><b># Trending Topics</b></p>

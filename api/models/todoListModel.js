@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userDBSchema = new Schema({
+  //_id :  Schema.Types.ObjectId,
   FirstName: {type: String, trim: true,sparse: true, required: true},
   LastName: {type: String, trim: true,sparse: true, required: true},
   Email : {type: String, trim: true, index: true, unique: true, sparse: true, required: true},
@@ -15,7 +16,7 @@ var userDBSchema = new Schema({
   Coins : {type: Number},
   profileImage : {type: String, default: './public/img/user_logo.png' },
   DOB : {type:Date},
-  blogIDs : [],         
+  blogIDs : [{  type: Schema.Types.ObjectId, ref: 'myBlogDatabase'}],         
 });
 
 var BlogFlowSchema = new Schema({
@@ -24,22 +25,11 @@ var BlogFlowSchema = new Schema({
 	BlogImageUrl:{type: String, trim: true,sparse: true, required: false},
 	BlogBody:{type: String, trim: true,sparse: true, required: false},
 	Topic : {type: String},
-  userid : [{ type: Schema.Types.ObjectId, ref: 'creator' }],
-  CreatedBy : {type: String, trim: true},
+  CreatedBy : {  type: Schema.Types.ObjectId, ref: 'myUserDatabase'} ,
   CreatedDate : {type:Date},
+  viewerid : [{  type: Schema.Types.ObjectId, ref: 'myUserDatabase'} ],
 });
 
-var BlogSchema = new Schema({
-  Heading: {type: String, trim: true, required: true},
-  Intro: {type: String, trim: true},
-  blog: {type: String, trim: true, required: true},
-  CreatedBy : {type: String, trim: true, required: true},
-  CreatedDate : {type:Date},
-  Topic : {type: String}
-})
-
 module.exports = mongoose.model('myUserDatabase', userDBSchema);
-
-module.exports = mongoose.model('blog', BlogSchema);
 
 module.exports = mongoose.model('myBlogDatabase', BlogFlowSchema);

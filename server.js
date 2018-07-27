@@ -12,7 +12,7 @@ var express 		= require('express'),
 	Task 			= require('./api/models/todoListModel'), //created model loading here
 	bodyParser 		= require('body-parser');
 	var multer  	= require('multer');
-	
+	app.use("/public",express.static(path.join(__dirname, 'public')));
 	// mongoose instance connection url connection
 	mongoose.Promise = global.Promise;
 	mongoose.connect('mongodb://localhost/db'); 
@@ -25,7 +25,7 @@ var express 		= require('express'),
 	//*****************cookie code************
 	app.use(cookieParser());
 	
-	app.use("/public",express.static(path.join(__dirname, 'public')));
+	
 	app.set('views', __dirname + '/views');
 	app.engine('html', require('ejs').renderFile);
 	

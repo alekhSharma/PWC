@@ -32,9 +32,6 @@ module.exports = function(app) {
   .get(PWS.blogsetup)
   .post(PWS.blogsetup);
 
-  app.route('/blogcreate')
-  .post(PWS.createblog);
-
   app.route('/adminPanel')
   .get(PWS.adminPanel)
   .post(PWS.adminPanel);

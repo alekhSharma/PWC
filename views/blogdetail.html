@@ -20,11 +20,13 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<script>
-		
-		$(document).ready(function(){
-	
-		});
-
+		function onloading(){
+			document.getElementById('tagOne').innerHTML = '&lt;';
+			document.getElementById('tagTwo').innerHTML = 'Code';
+			document.getElementById('tagThree').innerHTML = ':';
+			document.getElementById('tagFour').innerHTML = '<i class="fa fa-code-fork"></i> PlaY';
+			document.getElementById('tagFive').innerHTML = '/&gt;';
+		}
 	</script>
 	<style>
 			ul {
@@ -54,50 +56,63 @@
 	</style>
 </head>
 
-<body class="w3-Nunito w3-small">
-	<div class="w3-container" style="background-color:white;">		
-		<div class="w3-row">
-			
-		      <div class="w3-col" style="width:300px;">
-		        <p class="w3-text-black w3-large"  style="font-size: 20px;">
-		          <spam style="color:green; font-size: 24px;">Play </spam> with <spam style="color: #009edb; font-size: 24px;">Code</spam>
-		        </p>
-		      </div>
-		      <div class="w3-rest w3-right-align">
-		          <p class="w3-text-black w3-padding" style="font-size: 14px;"> 
-
-		             <span > 
-		                 <i  id="signoutrequest" class="fa fa-sign-out" style="font-size: 18px;"></i> Log out
-		            </span>
-
-		          </p>
-		      </div>
-    
-		</div>
-	</div>
-	<div class="w3-container w3-text-white w3-center" style="background: linear-gradient(90deg, #4b7bec,#2c52ab );">
+<body class="w3-Nunito w3-small" onload="onloading()">
+	<div class="w3-container w3-top" style="background-color:#24292e;">
+	<div class="w3-row">
 		
-		<div class="w3-row" style="margin-left:35%;font-size: 16px;padding:10px;">
-			<ul>
-			  <li><a class="active" href="#home">Learn</a></li>
-			  <li><a href="#news">Practise</a></li>
-			  <li><a href="#contact">Implement</a></li>
-			  <li><a href="#about">Contribute</a></li>
-			  <li><a href="#about">Fun</a></li>
-			</ul>
-		</div>
+	      <div class="w3-col" style="width:300px;">
+	        <p class="w3-large w3-margin"  style="font-size: 20px;">
+	        <spam style="color: #C9C9C9; font-size: 22px;margin:0px;padding:0px;" id="tagOne"></spam>
+	        <spam style="color: #4a90e2; font-size: 22px;margin:0px;padding:0px;" id="tagTwo"></spam>
+	        <spam style="color: #C9C9C9; font-size: 22px;margin:0px;padding:0px;" id="tagThree"></spam>
+	        <spam style="color: #0bff01; font-size: 22px;margin:0px;padding:0px;" id="tagFour"></spam>
+	        <spam style="color: #C9C9C9; font-size: 22px;margin:0px;padding:0px;" id="tagFive"></spam>
+	        </p>
+	      </div>
+
 	</div>
+</div>
+<!-- Header Over -->
 	
-	<div class="w3-container" style="background-color:white;height: 100vh;">
-		<div class="w3-row">
+	
+<div class="w3-container" style="margin-top: 55px;height: 100%;">
+		<div class="w3-row w3-margin-top">
 			<div class="w3-col w3-margin " style="width:70%;background-color: white;">
-				<div class="w3-container w3-xxlarge" > <b><%= blog[0].Heading %> </b></div><br/>
-				<div class="w3-container w3-xlarge" > <%= blog[0].Intro %> </div><br/>
-				<div class="w3-container w3-large" ><%= blog[0].blog %></div>
+				<div class="w3-container w3-xlarge" > <%= blog[0].BlogHead %> </div><br/>
+				<div class="w3-container w3-large" ><%= blog[0].BlogBody %></div>
 				<hr/>
-				<div class=" w3-margin-top w3-container w3-normal">Written by - <%= blog[0].CreatedBy %></div>
+				<div class="w3-row" style="width:100%;">
+					<div class="w3-col" style="width:10%;">
+						<img class="w3-circle " src='<%= userdetail[0].profileImage %>' id="homepic" width="100%;" style="border:2px solid #fff;box-shadow: inset 0 1.5px 3px 0 rgba(0,0,0,.15),0 1.5px 3px 0 rgba(0,0,0,.15);"/>
+					</div>
+					<div class="w3-rest w3-large w3-right-align">Written By - 
+						<%= userdetail[0].FirstName %> <%=userdetail[0].LastName %>
+					</div>
+				</div>
+			</div>
+			<div class="w3-rest w3-margin">
+				
+								<div class="w3-col w3-left-align w3-text-grey">
+									Tags: &nbsp;
+										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
+									
+										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
+
+										<span class="w3-tag w3-round w3-small w3-light-grey w3-text-grey">Lighting</span>
+
+								</div>	
+								<div class="w3-col w3-left-align w3-margin-top w3-text-grey">
+
+									Contributors:
+
+								</div>
+								<div class="w3-col w3-left-align w3-margin-top w3-text-grey">
+									
+									Viewer:
+								</div>		
 			</div>
 		</div>
-	</div>
+
+</div>
 </body>
 </html>

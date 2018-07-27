@@ -548,7 +548,7 @@ font-family:Comic Sans MS;
 </style>
 </head>
 
-<body class="w3-Nunito w3-small" onload="onloading()">
+<body class="w3-small" onload="onloading()" style="font-family: "Source Sans Pro", Helvetica, sans-serif">
 
 <!-- hover Modal -->
 
@@ -590,7 +590,7 @@ font-family:Comic Sans MS;
 								  <input type="submit" value="Upload" id="uploadBtn" name="submit" style="">
 								  <span id = "status"></span>
 								</form>
-						  </p>
+							</p>
 						</div>
 						<hr/>
 						<div class="w3-container">
@@ -813,7 +813,9 @@ font-family:Comic Sans MS;
 				</div>
 				<input type="hidden" name="myDoc" style="width:100%;">
 				<div id="toolBar2" class="toolBar2" style="border:1px solid #e0e0e0;width:100%;">
-				<a><img  style="height:30px;" class="intLink" title="Bold" onclick="formatDoc('bold');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" /></a>
+				<a>
+					<img style="height:30px;" class="intLink" title="Bold" onclick="formatDoc('bold');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" />
+				</a>
 				<img style="height:30px;" class="intLink" title="Italic" onclick="formatDoc('italic');" src="data:image/gif;base64,R0lGODlhFgAWAKEDAAAAAF9vj5WIbf///yH5BAEAAAMALAAAAAAWABYAAAIjnI+py+0Po5x0gXvruEKHrF2BB1YiCWgbMFIYpsbyTNd2UwAAOw==" />
 				<img style="height:30px;" class="intLink" title="Underline" onclick="formatDoc('underline');" src="data:image/gif;base64,R0lGODlhFgAWAKECAAAAAF9vj////////yH5BAEAAAIALAAAAAAWABYAAAIrlI+py+0Po5zUgAsEzvEeL4Ea15EiJJ5PSqJmuwKBEKgxVuXWtun+DwxCCgA7" />
 				<img style="height:30px;" class="intLink" title="Numbered list" onclick="formatDoc('insertorderedlist');" src="data:image/gif;base64,R0lGODlhFgAWAMIGAAAAADljwliE35GjuaezxtHa7P///////yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKSespwjoRFvggCBUBoTFBeq6QIAysQnRHaEOzyaZ07Lu9lUBnC0UGQU1K52s6n5oEADs=" />
@@ -837,14 +839,14 @@ font-family:Comic Sans MS;
 					<div class="">
 					<% for (var key in blogdetail) { %>
 						
-						<div class="w3-normal w3-margin-top blogs"  id="<%= blogdetail[key].id %>" style="border: 1px solid #e0e0e0; box-shadow: inset 0 1.5px 3px 0 rgba(0,0,0,.15),0 1.5px 3px 0 rgba(0,0,0,.15);">
+						<div class="w3-margin-top blogs"  id="<%= blogdetail[key].id %>" style="border: 1px solid #e0e0e0; box-shadow: inset 0 1.5px 3px 0 rgba(0,0,0,.15),0 1.5px 3px 0 rgba(0,0,0,.15);">
 
-							<div class="w3-white  w3-padding w3-text-blue blogs" style="overflow: hidden;"  id="<%= blogdetail[key].id %>">
-					    	<b><%= blogdetail[key].Heading %></b>
+							<div class="w3-white w3-large w3-padding w3-text-blue blogs" style="overflow: hidden;"  id="<%= blogdetail[key].id %>">
+					    	<b><%= blogdetail[key].BlogHead %></b>
 							</div>
 							
-							<div class="w3-white w3-padding blogs"  id="<%= blogdetail[key].id %>" style="margin-bottom: 0px;">
-							<%= blogdetail[key].Intro %>
+							<div class="w3-white w3-padding blogs w3-normal"  id="<%= blogdetail[key].id %>" style="margin-bottom: 0px;">
+							<%= blogdetail[key].BlogBody %>
 							<hr style="margin-top: 2px;margin-bottom: 2px;" />
 							</div>
 						
